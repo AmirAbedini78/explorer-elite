@@ -1,0 +1,16 @@
+services:
+  directus:
+    image: directus/directus:latest
+    ports:
+      - "8055:8055"          # دسترسی از مرورگر: http://localhost:8055
+    environment:
+      KEY: "changeme-key"    # رشته دلخواه (شناسه اینستنس/کلاستر)
+      SECRET: "changeme-secret"  # خیلی مهم برای امضای JWT
+      ADMIN_EMAIL: "admin@example.com"
+      ADMIN_PASSWORD: "Strong!Passw0rd"
+      PUBLIC_URL: "http://localhost:8055"  # برای لینک‌ها/آپلود
+      DB_CLIENT: "sqlite3"
+      DB_FILENAME: "/directus/database/data.db"
+    volumes:
+      - ./uploads:/directus/uploads
+      - ./database:/directus/database

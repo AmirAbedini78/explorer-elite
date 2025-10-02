@@ -1,0 +1,4 @@
+.env
+uploads/
+database/
+node_modules/
