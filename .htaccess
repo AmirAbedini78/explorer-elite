@@ -1,4 +1,9 @@
-DirectoryIndex disabled
 RewriteEngine On
 RewriteBase /
-RewriteRule ^(.*)?$ http://localhost:3000/$1 [P,L]
+
+# اگر فایل یا فولدر وجود داشت، مستقیم باز شود
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# بقیه درخواست‌ها را به Node.js پروکسی کن
+RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [L]
